@@ -5,17 +5,19 @@ const STARTER_UNIVERSITIES = [
   "California Institute of Technology", "Carnegie Mellon University", "Case Western Reserve University",
   "Columbia University", "Cornell University", "Dartmouth College", "Duke University", "Emory University",
   "Florida State University", "Georgetown University", "Georgia Institute of Technology", "Harvard University",
-  "Johns Hopkins University", "Massachusetts Institute of Technology", "New York University",
-  "Northwestern University", "Ohio State University", "Princeton University", "Purdue University",
+  "Johns Hopkins University", "Louisiana State University", "Loyola University New Orleans",
+  "Massachusetts Institute of Technology", "New York University", "Northwestern University", "Ohio State University",
+  "Princeton University", "Purdue University",
   "Rice University", "Stanford University", "Tufts University", "Tulane University",
   "University of California, Berkeley", "University of California, Davis", "University of California, Irvine",
   "University of California, Los Angeles", "University of California, San Diego",
   "University of California, Santa Barbara", "University of Chicago", "University of Florida",
-  "University of Illinois Urbana-Champaign", "University of Michigan", "University of North Carolina at Chapel Hill",
-  "University of Notre Dame", "University of Pennsylvania", "University of Rochester", "University of Southern California",
+  "University of Illinois Urbana-Champaign", "University of Massachusetts Amherst", "University of Michigan",
+  "University of New Orleans", "University of North Carolina at Chapel Hill", "University of Notre Dame",
+  "University of Pennsylvania", "University of Rochester", "University of Southern California",
   "University of Texas at Austin", "University of Virginia", "University of Washington",
   "University of Wisconsin-Madison", "Vanderbilt University", "Wake Forest University",
-  "Washington University in St. Louis", "Yale University"
+  "Washington University in St. Louis", "Wesleyan University", "Xavier University of Louisiana", "Yale University"
 ];
 
 const STORAGE_KEY = "in-common-planner-v1";

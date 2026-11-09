@@ -15,36 +15,18 @@
     <header class="topbar">
       <a class="brand" href="#" aria-label="In Common home"><span class="brand-mark">in<span>.</span></span><span>common</span></a>
       <nav aria-label="Main navigation">
-        <a href="#how-it-works">How it works</a>
-        <a href="#calendar-sources">Calendar guide</a>
+        <a href="#how-it-works">About</a>
+        <a href="#calendar-sources">Calendar sources</a>
       </nav>
-      <a class="topbar-cta" href="#your-schools">Plan together <span aria-hidden="true">↗</span></a>
+      <span class="topbar-note">2026–27 academic year</span>
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> A little less “when are you free?”</div>
-          <h1>Find the days<br>you have <em>in common.</em></h1>
-          <p>Pick your schools, add your breaks, and find the time everyone can get together.</p>
-          <a class="hero-link" href="#your-schools">Find your overlap <span aria-hidden="true">↓</span></a>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="orbit-center"><span>✳</span></div>
-          <div class="floating-note note-top"><span class="note-icon">☀</span><span><b>Spring break</b><small>There’s a weekend for that.</small></span></div>
-          <div class="floating-note note-bottom"><span class="note-icon note-lilac">↗</span><span><b>Apr 10 – 12</b><small>Looks like a plan.</small></span><span class="tiny-avatars">● ● ●</span></div>
-          <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✦</span>
-        </div>
-        <div class="hero-stamp"><span>GOOD<br>THINGS<br>ALIGN</span><i>✳</i></div>
-      </section>
-
       <section class="planner" id="your-schools">
         <div class="section-heading">
           <div>
-            <div class="eyebrow muted-eyebrow">YOUR LITTLE PLANNING CORNER</div>
-            <h2>Who are we planning for?</h2>
+            <div class="eyebrow muted-eyebrow">IN COMMON · UNIVERSITY BREAK PLANNER</div>
+            <h2>Find a time that works for everyone.</h2>
           </div>
           <span class="local-note"><span class="lock">♢</span> Your calendar data stays on this device</span>
         </div>
@@ -52,8 +34,7 @@
         <div class="planner-grid">
           <div class="school-panel">
             <div class="panel-topline">
-              <span class="step-number">01</span>
-              <div><h3>Add your schools</h3><p>Choose at least two to spot shared time.</p></div>
+              <div><h3>Your schools</h3><p>Search and select at least two.</p></div>
             </div>
             <label class="search-wrap" for="school-search">
               <span aria-hidden="true">⌕</span>
@@ -71,41 +52,38 @@
             <div id="school-calendars" class="school-calendars" aria-live="polite"></div>
           </div>
 
-          <div class="overlap-panel">
-            <div class="panel-topline">
-              <span class="step-number">02</span>
-              <div><h3>Find your overlap</h3><p>Shared days off, all in one place.</p></div>
-              <span class="academic-year">2026–27</span>
-              <button type="button" class="icon-button" id="calendar-help" aria-label="How calendar data works" title="How calendar data works">i</button>
+          <div class="planner-main">
+            <div class="overlap-panel">
+              <div class="overlap-summary" id="overlap-summary">
+                <div class="summary-icon">✳</div>
+                <div><strong>Find your shared days off</strong><p>Add schools to compare their published break dates.</p></div>
+              </div>
+              <div id="overlap-results" class="overlap-results"></div>
+              <div class="planner-tools">
+                <div class="calendar-actions">
+                  <button type="button" class="secondary-button" id="add-break-open"><span>＋</span> Add missing dates</button>
+                  <label class="upload-button" for="calendar-upload"><span aria-hidden="true">↥</span> Import <input type="file" id="calendar-upload" accept=".ics,.csv,text/calendar,text/csv"></label>
+                  <label class="import-school-label" for="import-school"><span class="visually-hidden">Import dates for</span><select id="import-school" aria-label="University for imported calendar"><option value="">Choose school</option></select></label>
+                </div>
+                <a class="calendar-help-link" id="calendar-help" href="#calendar-sources">How dates are sourced</a>
+              </div>
             </div>
-            <div class="overlap-summary" id="overlap-summary">
-              <div class="summary-icon">✳</div>
-              <div><strong>Good plans start here.</strong><p>Add schools and their break calendars to see what lines up.</p></div>
-            </div>
-            <div id="overlap-results" class="overlap-results"></div>
-            <div class="calendar-actions">
-              <button type="button" class="secondary-button" id="add-break-open"><span>＋</span> Add missing dates</button>
-              <label class="upload-button" for="calendar-upload"><span aria-hidden="true">↥</span> Import calendar <input type="file" id="calendar-upload" accept=".ics,.csv,text/calendar,text/csv"></label>
-            </div>
-            <label class="import-school-label" for="import-school">Import dates for <select id="import-school" aria-label="University for imported calendar"><option value="">Select a university</option></select></label>
-            <p class="import-hint">Officially published 2026–27 breaks appear automatically where verified. Add or import dates if a school’s calendar isn’t available yet.</p>
+
+            <section class="calendar-view" aria-labelledby="calendar-view-title">
+              <div class="calendar-view-heading">
+                <div class="calendar-view-title">
+                  <div><h3 id="calendar-view-title">Shared breaks</h3><p>Select a date to see which schools are off.</p></div>
+                </div>
+                <div id="calendar-legend" class="calendar-legend" aria-label="School color legend"></div>
+              </div>
+              <div id="calendar-months" class="calendar-months"></div>
+              <div id="calendar-day-detail" class="calendar-day-detail" aria-live="polite">
+                <span class="detail-star" aria-hidden="true">✳</span>
+                <span>Select any date to see which schools are off.</span>
+              </div>
+            </section>
           </div>
         </div>
-
-        <section class="calendar-view" aria-labelledby="calendar-view-title">
-          <div class="calendar-view-heading">
-            <div class="calendar-view-title">
-              <span class="step-number">03</span>
-              <div><h3 id="calendar-view-title">The year, at a glance</h3><p>Colored dates are school breaks. Select a day to see who’s off.</p></div>
-            </div>
-            <div id="calendar-legend" class="calendar-legend" aria-label="School color legend"></div>
-          </div>
-          <div id="calendar-months" class="calendar-months"></div>
-          <div id="calendar-day-detail" class="calendar-day-detail" aria-live="polite">
-            <span class="detail-star" aria-hidden="true">✳</span>
-            <span>Select any date to see which schools are off.</span>
-          </div>
-        </section>
       </section>
 
       <section class="how-section" id="how-it-works">
