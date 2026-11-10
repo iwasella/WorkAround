@@ -32,7 +32,9 @@ h1, h2, h3, p { margin-top: 0; }
 .planner { max-width: 1680px; margin: 0 auto; padding: 19px 30px 34px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 14px; }
 .muted-eyebrow { color: #888980; font-size: 9px; letter-spacing: 1.55px; }
-.section-heading h2, .sources-copy h2 { margin: 4px 0 0; font: 700 21px/1.2 var(--display); letter-spacing: -.7px; }
+.section-heading h1, .section-heading h2, .sources-copy h2 { margin: 4px 0 0; font: 700 21px/1.2 var(--display); letter-spacing: -.7px; }
+.planner-tagline { margin: 5px 0 0; color: #77786f; font: 500 11px/1.5 var(--sans); }
+.university-directory p { max-width: 900px; }
 .local-note { padding-bottom: 3px; color: #898a82; font-size: 9px; }
 .lock { margin-right: 5px; color: var(--green); font-size: 16px; vertical-align: -1px; }
 .planner-grid { display: grid; grid-template-columns: minmax(250px, 295px) minmax(0, 1fr); gap: 14px; align-items: start; }

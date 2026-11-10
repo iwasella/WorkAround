@@ -6,6 +6,10 @@ A static, client-side university break planner for GitHub Pages.
 
 Open `index.html` in a browser, or serve this folder with any static file server. No build step, backend, or package installation is required. To publish, enable GitHub Pages for the repository's `main` branch and root folder.
 
+## Search indexing
+
+The page provides a descriptive title and summary, Open Graph/social metadata, structured data, a crawlable university coverage directory, `robots.txt`, and a sitemap for the GitHub Pages URL. Search indexing and rankings are controlled by search engines and are not guaranteed. To help indexing, verify the live site in Google Search Console and Bing Webmaster Tools, then submit `https://iwasella.github.io/WorkAround/sitemap.xml`. The tool compares bundled academic dates; it is not an official school calendar and does not live-sync university systems.
+
 ## University list and calendar data
 
 The starter directory contains 56 well-known U.S. universities, alphabetized for discovery; it is a curated starting point, not a particular publisher's ranked top 50. Add any other school with **Add a university not listed**.

@@ -4,8 +4,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f5f3ed">
-    <meta name="description" content="Find the school breaks your friends have in common.">
-    <title>WorkAround — Find your shared breaks</title>
+    <meta name="description" content="Compare 2026–27 academic calendars and university break dates. Find overlapping college holidays, winter recesses, and spring breaks across 56 U.S. universities with WorkAround.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://iwasella.github.io/WorkAround/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="WorkAround">
+    <meta property="og:title" content="WorkAround | Compare University Academic Calendars & Breaks">
+    <meta property="og:description" content="Compare 2026–27 university holidays, winter breaks, and spring recesses to find dates that overlap.">
+    <meta property="og:url" content="https://iwasella.github.io/WorkAround/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="WorkAround | University Break Calendar">
+    <meta name="twitter:description" content="Compare 2026–27 university holidays, winter breaks, and spring recesses to find dates that overlap.">
+    <title>WorkAround | Compare University Academic Calendars & Breaks 2026–27</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "WorkAround",
+            "url": "https://iwasella.github.io/WorkAround/",
+            "description": "Compare published university academic breaks and holidays to find dates that overlap."
+          },
+          {
+            "@type": "WebApplication",
+            "name": "WorkAround University Break Calendar",
+            "url": "https://iwasella.github.io/WorkAround/",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": "Any",
+            "isAccessibleForFree": true,
+            "description": "A free 2026–27 calendar tool for comparing academic breaks, holidays, winter recesses, and spring breaks across 56 U.S. universities. Dates are linked to official school calendar sources."
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,7 +58,8 @@
         <div class="section-heading">
           <div>
             <div class="eyebrow muted-eyebrow">WORKAROUND · UNIVERSITY BREAK PLANNER</div>
-            <h2>"Yeah- let's see if we can work around that." - Ella (Me)</h2>
+            <h1>Compare university academic calendars and breaks</h1>
+            <p class="planner-tagline">"Yeah- let's see if we can work around that." - Ella (Me)</p>
           </div>
           <span class="local-note"><span class="lock">♢</span> Your calendar data stays on this device</span>
         </div>
@@ -103,11 +136,16 @@
         <div class="sources-icon">✳</div>
         <div class="sources-copy"><div class="eyebrow muted-eyebrow">WHERE DO SCHOOL DATES COME FROM?</div>
           <h2>Official calendars, not guesswork.</h2>
-          <p>The built-in 2026–27 dates are collected from each school’s official academic calendar, usually published by its registrar. Each school’s calendar card links to its source. We include full break dates only when they’re published; an unverified calendar is clearly marked instead of guessed.</p>
+          <p>Looking for a university academic calendar, college holiday schedule, or 2026–27 spring break date? WorkAround compares published breaks across 56 U.S. universities so students can find overlapping days off. It is an independent planning tool, not an official university calendar. Dates link to each school’s official academic-calendar source; coverage and program dates can vary.</p>
+          <details class="university-directory">
+            <summary>Universities with 2026–27 calendar dates</summary>
+            <p>Academic calendar dates and school break coverage are available for Arizona State University, Boston College, Boston University, Brown University, California Institute of Technology, Carnegie Mellon University, Case Western Reserve University, Columbia University, Cornell University, Dartmouth College, Duke University, Emory University, Florida State University, Georgetown University, Georgia Institute of Technology, Harvard University, Johns Hopkins University, Louisiana State University, Loyola University New Orleans, Massachusetts Institute of Technology, New York University, Northwestern University, Ohio State University, Princeton University, Purdue University, Rice University, Stanford University, Tufts University, Tulane University, University of California, Berkeley, University of California, Davis, University of California, Irvine, University of California, Los Angeles, University of California, San Diego, University of California, Santa Barbara, University of Chicago, University of Florida, University of Illinois Urbana-Champaign, University of Massachusetts Amherst, University of Michigan, University of New Orleans, University of North Carolina at Chapel Hill, University of Notre Dame, University of Pennsylvania, University of Rochester, University of Southern California, University of Texas at Austin, University of Virginia, University of Washington, University of Wisconsin-Madison, Vanderbilt University, Wake Forest University, Washington University in St. Louis, Wesleyan University, Xavier University of Louisiana, and Yale University.</p>
+          </details>
           <details>
             <summary>Will I need an API or constant updates?</summary>
             <p>The site can’t safely search and parse university websites live in a student’s browser: their calendar formats vary and many block cross-site access. Instead, verified official dates are bundled with the static site. When schools publish a new year or change a date, the dataset should be checked and updated—typically each term. That can be done without an API; a scheduled data pipeline can help later, but official dates still need verification.</p>
             <p>Students don’t have to import calendars that are already included. If an official 2026–27 date isn’t posted yet or a school isn’t covered, they can add dates or import that school’s .ics/.csv calendar.</p>
+            <p>WorkAround compares dates in this browser; it does not live-sync with university registration systems or automatically subscribe to personal calendars.</p>
           </details>
         </div>
       </section>
