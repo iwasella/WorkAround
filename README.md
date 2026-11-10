@@ -1,4 +1,4 @@
-# In Common
+# WorkAround
 
 A static, client-side university break planner for GitHub Pages.
 
