@@ -22,10 +22,11 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://www.bc.edu/bc-web/offices/student-services/registrar/academic-calendar.html",
         checkedAt: "2026-11-09",
-        note: "EventsBC confirms the listed dates. Fall Break excludes the Law School; Thanksgiving is listed as a holiday but the event does not explicitly say classes are canceled. A winter gap could not be bounded from accessible official class/exam dates.",
+        note: "Standard undergraduate day-student calendar (excluding Law). Fall exams run through Dec 21 and Spring classes begin Jan 19; Winter Break is the interval between those terms.",
         events: [
           { name: "No Classes · Fall Break (except Law School)", start: "2026-10-12", end: "2026-10-12", term: "Fall" },
           { name: "Thanksgiving Holidays · official event", start: "2026-11-25", end: "2026-11-27", term: "Fall" },
+          { name: "Winter Break · Standard undergraduate calendar", start: "2026-12-22", end: "2027-01-18", term: "Winter" },
           { name: "Spring Vacation", start: "2027-03-08", end: "2027-03-13", term: "Spring" }
         ]
       },
@@ -114,12 +115,12 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://registrar.cornell.edu/calendars-exams/academic-calendar/2026-2027",
         checkedAt: "2026-11-08",
-        note: "Winter dates distinguish the regular-instruction gap from the active January Winter Session; session calendars can differ by school.",
+        note: "Standard undergraduate calendar, excluding Winter Session courses. Fall term activity ends Dec 19 and regular Spring instruction begins Jan 25.",
         events: [
           { name: "Labor Day · No classes", start: "2026-09-07", end: "2026-09-07", term: "Fall" },
           { name: "Fall Break · No classes", start: "2026-10-10", end: "2026-10-13", term: "Fall" },
           { name: "Thanksgiving Break · No classes", start: "2026-11-25", end: "2026-11-29", term: "Fall" },
-          { name: "Regular-Instruction Winter Gap · After finals; Winter Session courses vary", start: "2026-12-20", end: "2027-01-03", term: "Winter" },
+          { name: "Winter Break · Standard undergraduate schedule, excluding Winter Session", start: "2026-12-20", end: "2027-01-24", term: "Winter" },
           { name: "New Year’s Day · No classes", start: "2027-01-01", end: "2027-01-01", term: "Winter" },
           { name: "Martin Luther King Jr. Holiday · No classes", start: "2027-01-18", end: "2027-01-18", term: "Winter" },
           { name: "February Break · No classes", start: "2027-02-13", end: "2027-02-16", term: "Spring" },
@@ -223,9 +224,10 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://registrar.jhu.edu/academic-calendar/",
         checkedAt: "2026-11-08",
-        note: "Calendar is division-specific. Fall Recess dates shown for the main undergraduate divisions (KSAS and Whiting); Fall Break is marked division-specific, and Winter Intersession is active Jan 4–22. Verify the student's division.",
+        note: "Standard undergraduate schedule for KSAS and Whiting. Their calendars list no Winter Intersession; Fall exams end Dec 23 and Spring classes begin Jan 25.",
         events: [
           { name: "Fall Recess · Main undergraduate divisions", start: "2026-11-23", end: "2026-11-27", term: "Fall" },
+          { name: "Winter Break · Standard undergraduate schedule", start: "2026-12-24", end: "2027-01-24", term: "Winter" },
           { name: "Spring Break · University Standard calendar", start: "2027-03-22", end: "2027-03-26", term: "Spring" }
         ]
       },
@@ -233,13 +235,13 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://www.lsu.edu/registrar/academics/academic-calendars/2026-2027/2026-2027-academic-calendar.php",
         checkedAt: "2026-11-09",
-        note: "Main-campus academic calendar. Thanksgiving begins at 12:30 p.m. Nov 25, and Mardi Gras classes resume at 12:30 p.m. Feb 10; the calendar grid marks those dates as full days. Winter intersession classes run Dec 14–Jan 6, with a holiday closure Dec 24–Jan 3.",
+        note: "Main-campus standard undergraduate semester calendar, excluding Wintersession. Fall exams end Dec 12 and Spring classes begin Jan 11. Thanksgiving begins at 12:30 p.m. Nov 25; Mardi Gras classes resume at 12:30 p.m. Feb 10.",
         events: [
           { name: "Labor Day Holiday", start: "2026-09-07", end: "2026-09-07", term: "Fall" },
           { name: "Fall Holiday", start: "2026-10-08", end: "2026-10-09", term: "Fall" },
           { name: "Thanksgiving Holiday · Begins 12:30 p.m. Nov 25", start: "2026-11-25", end: "2026-11-27", term: "Fall" },
-          { name: "Winter Holiday · Intersession courses resume Jan 4", start: "2026-12-24", end: "2027-01-03", term: "Winter" },
-          { name: "Winter Break · After intersession exams", start: "2027-01-07", end: "2027-01-10", term: "Winter" },
+          { name: "Winter Break · Standard undergraduate schedule, excluding Wintersession", start: "2026-12-13", end: "2027-01-10", term: "Winter" },
+          { name: "Winter Holiday · University closed", start: "2026-12-24", end: "2027-01-03", term: "Winter" },
           { name: "Martin Luther King Jr. Day Holiday", start: "2027-01-18", end: "2027-01-18", term: "Spring" },
           { name: "Mardi Gras Holiday · Classes resume 12:30 p.m. Feb 10", start: "2027-02-08", end: "2027-02-10", term: "Spring" },
           { name: "Spring Break", start: "2027-03-08", end: "2027-03-12", term: "Spring" },
@@ -266,13 +268,13 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://registrar.mit.edu/calendar",
         checkedAt: "2026-11-08",
-        note: "The calendar labels Fall holidays but does not state that classes are canceled. The winter gap is after Fall exams and before January IAP; IAP runs Jan 4–29 and is active academic programming.",
+        note: "Standard undergraduate fall/spring schedule, excluding January IAP and summer sessions. Fall exams end Dec 18 and Spring classes begin Feb 1.",
         events: [
           { name: "Indigenous Peoples’ Day · Calendar holiday", start: "2026-10-12", end: "2026-10-12", term: "Fall" },
           { name: "Veterans Day · Calendar holiday", start: "2026-11-11", end: "2026-11-11", term: "Fall" },
           { name: "Thanksgiving · Calendar holiday", start: "2026-11-26", end: "2026-11-26", term: "Fall" },
           { name: "Institute Holiday", start: "2026-11-27", end: "2026-11-27", term: "Fall" },
-          { name: "Winter Break · Between Fall exams and IAP", start: "2026-12-19", end: "2027-01-03", term: "Winter" },
+          { name: "Winter Break · Standard schedule, excluding IAP", start: "2026-12-19", end: "2027-01-31", term: "Winter" },
           { name: "Spring Break", start: "2027-03-22", end: "2027-03-26", term: "Spring" }
         ]
       },
@@ -280,12 +282,11 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://www.nyu.edu/students/student-information-and-resources/registration-records-and-graduation/academic-calendar.html",
         checkedAt: "2026-11-08",
-        note: "The central University calendar lists Fall, January Term, and Spring dates. January Term classes run Jan 4–15, so the gap to Spring classes is separate from the December/January Winter Recess.",
+        note: "Standard undergraduate fall/spring schedule, excluding January Term. Winter Break runs from the published December student recess through the day before Spring classes begin Jan 19.",
         events: [
           { name: "Fall Break", start: "2026-10-12", end: "2026-10-12", term: "Fall" },
           { name: "Thanksgiving Recess", start: "2026-11-26", end: "2026-11-27", term: "Fall" },
-          { name: "Winter Recess for Students", start: "2026-12-23", end: "2027-01-01", term: "Winter" },
-          { name: "Winter Break · Between January Term and Spring", start: "2027-01-16", end: "2027-01-24", term: "Winter" },
+          { name: "Winter Break · Standard schedule, excluding January Term", start: "2026-12-23", end: "2027-01-18", term: "Winter" },
           { name: "Spring Break", start: "2027-03-15", end: "2027-03-19", term: "Spring" }
         ]
       },
@@ -331,10 +332,11 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://www.purdue.edu/registrar/calendars/academic/",
         checkedAt: "2026-11-08",
-        note: "Main Registrar calendar includes an active Winter Term Dec 21–Jan 8; the Dec 28–30 entry is a University closure, not a term-wide student break.",
+        note: "Standard undergraduate fall/spring schedule, excluding Winter Term. Fall exams end Dec 19 and Spring classes begin Jan 11; University holiday closures are listed separately.",
         events: [
           { name: "Fall Break", start: "2026-10-12", end: "2026-10-13", term: "Fall" },
           { name: "Thanksgiving Break", start: "2026-11-25", end: "2026-11-28", term: "Fall" },
+          { name: "Winter Break · Standard schedule, excluding Winter Term", start: "2026-12-20", end: "2027-01-10", term: "Winter" },
           { name: "Winter Recess · University closed", start: "2026-12-28", end: "2026-12-30", term: "Winter" },
           { name: "Spring Break", start: "2027-03-15", end: "2027-03-20", term: "Spring" }
         ]
@@ -536,9 +538,11 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://www.registrar.illinois.edu/fall-2026-academic-calendar/",
         checkedAt: "2026-11-08",
+        note: "Standard undergraduate fall/spring schedule, excluding Winter Session. Fall exams end Dec 18 and Spring instruction begins Jan 19.",
         events: [
           { name: "Labor Day · No classes", start: "2026-09-07", end: "2026-09-07", term: "Fall" },
           { name: "Fall Break · No instruction", start: "2026-11-21", end: "2026-11-29", term: "Fall" },
+          { name: "Winter Break · Standard schedule, excluding Winter Session", start: "2026-12-19", end: "2027-01-18", term: "Winter" },
           { name: "Christmas Day · No classes", start: "2026-12-25", end: "2026-12-25", term: "Winter" },
           { name: "New Year’s Day · No classes", start: "2027-01-01", end: "2027-01-01", term: "Winter" },
           { name: "Martin Luther King Jr. Day · No classes", start: "2027-01-18", end: "2027-01-18", term: "Winter" },
@@ -549,13 +553,13 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://www.umass.edu/registrar/academic-calendar",
         checkedAt: "2026-11-09",
-        note: "Faculty Senate academic calendar. Students are considered on break between Fall and Spring semesters, but the optional Winter term runs Dec 24–Feb 1; students enrolled in Winter courses are not off for the entire interval. Thanksgiving recess begins after the last class on Nov 24; Spring recess ends when classes resume Mar 22.",
+        note: "Standard undergraduate fall/spring schedule, excluding optional Winter courses. Fall exams end Dec 23 and Spring classes begin Feb 4; Thanksgiving recess begins after the last class on Nov 24.",
         events: [
           { name: "Indigenous Peoples’ Day", start: "2026-10-12", end: "2026-10-12", term: "Fall" },
           { name: "Election Day · No classes", start: "2026-11-03", end: "2026-11-03", term: "Fall" },
           { name: "Veterans’ Day", start: "2026-11-11", end: "2026-11-11", term: "Fall" },
           { name: "Thanksgiving Recess", start: "2026-11-25", end: "2026-11-29", term: "Fall" },
-          { name: "Winter Break · Optional Winter term courses run Dec 24–Feb 1", start: "2026-12-24", end: "2027-02-01", term: "Winter" },
+          { name: "Winter Break · Standard schedule, excluding Winter courses", start: "2026-12-24", end: "2027-02-03", term: "Winter" },
           { name: "Presidents’ Day", start: "2027-02-15", end: "2027-02-15", term: "Spring" },
           { name: "Spring Recess", start: "2027-03-14", end: "2027-03-21", term: "Spring" },
           { name: "Patriots’ Day", start: "2027-04-19", end: "2027-04-19", term: "Spring" }
@@ -579,12 +583,12 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://www.lsuneworleans.edu/registrar/academic-calendar",
         checkedAt: "2026-11-09",
-        note: "Full-term dates only. Winter Intersession classes run Dec 14–Jan 4, so Winter Break is the gap after intersession exams and before Spring classes begin Jan 11; separate sessions may vary.",
+        note: "Standard undergraduate full-term schedule, excluding Winter Intersession. Fall final exams end Dec 10 and Spring classes begin Jan 11.",
         events: [
           { name: "Labor Day Holiday", start: "2026-09-07", end: "2026-09-07", term: "Fall" },
           { name: "Fall Holiday", start: "2026-10-12", end: "2026-10-13", term: "Fall" },
           { name: "Thanksgiving Break", start: "2026-11-26", end: "2026-11-27", term: "Fall" },
-          { name: "Winter Break · After Winter Intersession", start: "2027-01-05", end: "2027-01-10", term: "Winter" },
+          { name: "Winter Break · Standard schedule, excluding Intersession", start: "2026-12-11", end: "2027-01-10", term: "Winter" },
           { name: "Martin Luther King’s Birthday Holiday", start: "2027-01-18", end: "2027-01-18", term: "Spring" },
           { name: "Mardi Gras Holiday", start: "2027-02-08", end: "2027-02-13", term: "Spring" },
           { name: "Good Friday Holiday", start: "2027-03-26", end: "2027-03-26", term: "Spring" }
@@ -663,9 +667,10 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://registrar.utexas.edu/calendars/26-27",
         checkedAt: "2026-11-08",
-        note: "The official calendar lists an active Winter Term from Dec 15, 2026 through Jan 9, 2027, so no winter break is listed for that period.",
+        note: "Standard undergraduate fall/spring schedule, excluding Winter Term. Fall final exams end Dec 14 and Spring classes begin Jan 11.",
         events: [
           { name: "Fall Break / Thanksgiving · No classes", start: "2026-11-23", end: "2026-11-28", term: "Fall" },
+          { name: "Winter Break · Standard schedule, excluding Winter Term", start: "2026-12-15", end: "2027-01-10", term: "Winter" },
           { name: "Martin Luther King Jr. Day · No classes", start: "2027-01-18", end: "2027-01-18", term: "Spring" },
           { name: "Spring Break", start: "2027-03-15", end: "2027-03-20", term: "Spring" }
         ]
@@ -674,13 +679,12 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://registrar.virginia.edu/calendar/academic/2026-2027",
         checkedAt: "2026-11-09",
-        note: "University Registrar Academic Division calendar; January courses run Jan 4–15, so Winter Break is split around that active session.",
+        note: "Standard undergraduate fall/spring schedule, excluding January courses. Spring classes begin Jan 20, so Winter Break runs continuously from Dec 19 through Jan 19.",
         events: [
           { name: "Fall Reading Days · No classes", start: "2026-10-03", end: "2026-10-06", term: "Fall" },
           { name: "Election Day · No classes", start: "2026-11-03", end: "2026-11-03", term: "Fall" },
           { name: "Thanksgiving Recess", start: "2026-11-25", end: "2026-11-29", term: "Fall" },
-          { name: "Winter Break · Before January courses", start: "2026-12-19", end: "2027-01-03", term: "Winter" },
-          { name: "Winter Break · After January courses", start: "2027-01-16", end: "2027-01-19", term: "Winter" },
+          { name: "Winter Break · Standard schedule, excluding January courses", start: "2026-12-19", end: "2027-01-19", term: "Winter" },
           { name: "Spring Recess", start: "2027-03-06", end: "2027-03-14", term: "Spring" },
           { name: "Reading Day · No classes", start: "2027-05-09", end: "2027-05-09", term: "Spring" },
           { name: "Reading Day · No classes", start: "2027-05-12", end: "2027-05-12", term: "Spring" }
@@ -757,11 +761,11 @@ window.ACADEMIC_CALENDARS = {
         status: "partial",
         sourceUrl: "https://webapps.wesleyan.edu/new_academic_calendar/next",
         checkedAt: "2026-11-09",
-        note: "Undergraduate academic calendar. Winter Session runs Jan 5–18; Winter Break is the standard-term interval after Fall exams and before Winter Session. Jan 19 is a reading day and Jan 20 is an exam day, so neither is counted as a break before Spring classes begin Jan 21.",
+        note: "Standard undergraduate fall/spring calendar, excluding Winter Session and summer sessions. Spring classes begin Jan 21; Winter Break runs through Jan 20.",
         events: [
           { name: "Fall Break", start: "2026-10-26", end: "2026-10-27", term: "Fall" },
           { name: "Thanksgiving Recess", start: "2026-11-25", end: "2026-11-29", term: "Fall" },
-          { name: "Winter Break · Before Winter Session", start: "2026-12-20", end: "2027-01-04", term: "Winter" },
+          { name: "Winter Break", start: "2026-12-20", end: "2027-01-20", term: "Winter" },
           { name: "Spring Break", start: "2027-03-06", end: "2027-03-21", term: "Spring" }
         ]
       },

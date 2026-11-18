@@ -69,6 +69,41 @@ test("each university has required metadata and valid break dates", () => {
   }
 });
 
+test("Wesleyan follows the standard undergraduate schedule without winter or summer session", () => {
+  const wesleyan = calendar.schools["Wesleyan University"];
+  const winterBreak = wesleyan.events.find((event) => event.term === "Winter" && /break/i.test(event.name));
+  assert.deepEqual(JSON.parse(JSON.stringify(winterBreak)), {
+    name: "Winter Break", start: "2026-12-20", end: "2027-01-20", term: "Winter"
+  });
+  assert.match(wesleyan.note, /excluding Winter Session and summer sessions/i);
+  assert.match(wesleyan.note, /Spring classes begin Jan 21/i);
+});
+
+test("semester calendars exclude optional winter sessions from the standard undergraduate break", () => {
+  const expectedBreaks = {
+    "Boston College": ["2026-12-22", "2027-01-18"],
+    "Cornell University": ["2026-12-20", "2027-01-24"],
+    "Johns Hopkins University": ["2026-12-24", "2027-01-24"],
+    "Louisiana State University": ["2026-12-13", "2027-01-10"],
+    "Massachusetts Institute of Technology": ["2026-12-19", "2027-01-31"],
+    "New York University": ["2026-12-23", "2027-01-18"],
+    "Purdue University": ["2026-12-20", "2027-01-10"],
+    "University of Illinois Urbana-Champaign": ["2026-12-19", "2027-01-18"],
+    "University of Massachusetts Amherst": ["2026-12-24", "2027-02-03"],
+    "University of New Orleans": ["2026-12-11", "2027-01-10"],
+    "University of Texas at Austin": ["2026-12-15", "2027-01-10"],
+    "University of Virginia": ["2026-12-19", "2027-01-19"]
+  };
+
+  for (const [schoolName, [start, end]] of Object.entries(expectedBreaks)) {
+    const school = calendar.schools[schoolName];
+    const winterBreak = school.events.find((event) => event.term === "Winter" && /winter break/i.test(event.name));
+    assert.ok(winterBreak, `${schoolName} has a standard winter break`);
+    assert.deepEqual([winterBreak.start, winterBreak.end], [start, end], `${schoolName} break matches its regular term dates`);
+    assert.match(school.note, /standard undergraduate/i, `${schoolName} scope is clear`);
+  }
+});
+
 test("ICS parser handles valid dates, all-day exclusive end dates, and multi-day spans", () => {
   const { parseIcs } = loadParsers();
   const events = parseIcs([
