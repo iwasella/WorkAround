@@ -37,22 +37,69 @@ const overlapSummary = document.querySelector("#overlap-summary");
 const overlapResults = document.querySelector("#overlap-results");
 const schoolDialog = document.querySelector("#add-school-dialog");
 const breakDialog = document.querySelector("#add-break-dialog");
+const schoolAnnouncements = document.querySelector("#school-announcements");
 let toastTimer;
 
 function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    const schools = Array.isArray(saved.schools) ? saved.schools.filter((school) =>
+    const savedSchools = Array.isArray(saved.schools) ? saved.schools.filter((school) =>
       school && typeof school.id === "string" && typeof school.name === "string"
     ) : [];
     const events = Array.isArray(saved.events) ? saved.events.filter((event) =>
       event && typeof event.schoolId === "string" && typeof event.name === "string" &&
       isDate(event.start) && isDate(event.end) && event.start <= event.end
     ) : [];
+    const params = new URLSearchParams(window.location.search);
+    const requested = (params.get("schools") || "").split(",").filter(Boolean);
+    const sharedSchools = schoolsFromShareIds(requested, savedSchools);
+    const schools = sharedSchools.length ? sharedSchools : savedSchools;
     return { schools, events };
   } catch (error) {
     console.error("Could not read saved planner data.", error);
     return { schools: [], events: [] };
+  }
+}
+
+function shareIdForName(name) {
+  const slug = normalizeName(name).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return `school-${slug}`;
+}
+
+function schoolsFromShareIds(ids, savedSchools = []) {
+  const catalog = window.ACADEMIC_CALENDARS?.[ACADEMIC_YEAR]?.schools || {};
+  const requested = new Set(ids);
+  const savedById = new Map(savedSchools.map((school) => [school.id, school]));
+  const savedByName = new Map(savedSchools.map((school) => [normalizeName(school.name), school]));
+  const schools = [];
+  const usedNames = new Set();
+
+  for (const name of Object.keys(catalog)) {
+    const shareId = shareIdForName(name);
+    if (!requested.has(shareId) || usedNames.has(normalizeName(name))) continue;
+    schools.push(savedByName.get(normalizeName(name)) || { id: shareId, name, custom: false });
+    usedNames.add(normalizeName(name));
+  }
+  for (const id of requested) {
+    const saved = savedById.get(id) || savedSchools.find((school) => shareIdForName(school.name) === id);
+    if (saved && !usedNames.has(normalizeName(saved.name))) {
+      schools.push(saved);
+      usedNames.add(normalizeName(saved.name));
+    }
+  }
+  return schools;
+}
+
+function syncSchoolsToUrl() {
+  try {
+    const url = new URL(window.location.href);
+    const shareIds = [...new Set(state.schools.map((school) => shareIdForName(school.name)))];
+    if (shareIds.length) url.searchParams.set("schools", shareIds.join(","));
+    else url.searchParams.delete("schools");
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+  } catch (error) {
+    console.warn("Could not update the share link in this browser.", error);
   }
 }
 
@@ -89,6 +136,8 @@ function addSchool(name, custom = false) {
   }
   const school = makeSchool(cleanName, custom);
   state.schools.push(school);
+  schoolAnnouncements.textContent = `${school.name} added. ${state.schools.length} ${state.schools.length === 1 ? "university" : "universities"} selected.`;
+  syncSchoolsToUrl();
   saveState();
   render();
   showToast(`${school.name} added.`);
@@ -99,6 +148,8 @@ function removeSchool(id) {
   if (!school) return;
   state.schools = state.schools.filter((entry) => entry.id !== id);
   state.events = state.events.filter((event) => event.schoolId !== id);
+  schoolAnnouncements.textContent = `${school.name} removed. ${state.schools.length} ${state.schools.length === 1 ? "university" : "universities"} selected.`;
+  syncSchoolsToUrl();
   saveState();
   render();
 }
@@ -137,7 +188,7 @@ function renderSchoolResults() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "school-result";
-    button.setAttribute("role", "option");
+    button.setAttribute("aria-label", `Add ${name}`);
     const label = document.createElement("span");
     label.textContent = name;
     const plus = document.createElement("span");
@@ -435,7 +486,7 @@ function renderCalendarView() {
     const monthDate = new Date(Date.UTC(year, month, 1));
     const monthCard = document.createElement("section");
     monthCard.className = "month-card";
-    const heading = document.createElement("h4");
+    const heading = document.createElement("h3");
     heading.id = `calendar-month-${year}-${month + 1}`;
     heading.textContent = new Intl.DateTimeFormat(undefined, {
       month: "long", year: "numeric", timeZone: "UTC"
@@ -702,9 +753,12 @@ function parseCsv(text, schoolId) {
   });
 }
 
-document.querySelector("#add-school-open").addEventListener("click", () => {
+const addSchoolButton = document.querySelector("#add-school-open");
+const addBreakButton = document.querySelector("#add-break-open");
+addSchoolButton.addEventListener("click", () => {
   document.querySelector("#new-school-name").value = "";
   schoolDialog.showModal();
+  addSchoolButton.setAttribute("aria-expanded", "true");
   document.querySelector("#new-school-name").focus();
 });
 document.querySelector("#add-school-form").addEventListener("submit", (event) => {
@@ -712,7 +766,7 @@ document.querySelector("#add-school-form").addEventListener("submit", (event) =>
   addSchool(document.querySelector("#new-school-name").value, true);
   schoolDialog.close();
 });
-document.querySelector("#add-break-open").addEventListener("click", () => {
+addBreakButton.addEventListener("click", () => {
   if (!state.schools.length) {
     showToast("Add a university first.");
     schoolSearch.focus();
@@ -723,6 +777,7 @@ document.querySelector("#add-break-open").addEventListener("click", () => {
   document.querySelector("#break-name").value = "";
   renderBreakSchoolOptions();
   breakDialog.showModal();
+  addBreakButton.setAttribute("aria-expanded", "true");
 });
 document.querySelector("#add-break-form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -743,9 +798,26 @@ document.querySelector("#add-break-form").addEventListener("submit", (event) => 
 document.querySelectorAll("[data-close-dialog]").forEach((button) => {
   button.addEventListener("click", () => button.closest("dialog").close());
 });
+schoolDialog.addEventListener("close", () => addSchoolButton.setAttribute("aria-expanded", "false"));
+breakDialog.addEventListener("close", () => addBreakButton.setAttribute("aria-expanded", "false"));
 document.querySelector("#calendar-help").addEventListener("click", () => {
   document.querySelector("#calendar-sources").scrollIntoView({ behavior: "smooth" });
   document.querySelector("#calendar-sources details").open = true;
+});
+document.querySelector("#copy-share-link").addEventListener("click", async (event) => {
+  const button = event.currentTarget;
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    button.textContent = "Copied!";
+    button.classList.add("copied");
+    clearTimeout(button.copyTimer);
+    button.copyTimer = setTimeout(() => {
+      button.textContent = "Copy Share Link";
+      button.classList.remove("copied");
+    }, 1800);
+  } catch (error) {
+    showToast("Couldn’t copy the share link.");
+  }
 });
 schoolSearch.addEventListener("input", renderSchoolResults);
 schoolSearch.addEventListener("keydown", (event) => {

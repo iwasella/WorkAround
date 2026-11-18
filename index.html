@@ -45,7 +45,7 @@
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#" aria-label="WorkAround home"><span class="brand-mark">W<span>.</span></span><span>WorkAround</span></a>
+      <a class="brand" href="#"><span class="brand-mark">W<span>.</span></span><span>WorkAround</span></a>
       <nav aria-label="Main navigation">
         <a href="#how-it-works">About</a>
         <a href="#calendar-sources">Calendar sources</a>
@@ -67,22 +67,22 @@
         <div class="planner-grid">
           <div class="school-panel">
             <div class="panel-topline">
-              <div><h3>Your schools</h3><p>Search and select at least two.</p></div>
+              <div><h2>Your schools</h2><p>Search and select at least two.</p></div>
             </div>
             <label class="search-wrap" for="school-search">
               <span aria-hidden="true">⌕</span>
-              <input id="school-search" type="search" placeholder="Search universities…" autocomplete="off">
+              <input id="school-search" type="search" aria-label="Search universities" aria-controls="school-results" placeholder="Search universities…" autocomplete="off">
               <kbd>⌘ K</kbd>
             </label>
-            <div class="school-results" id="school-results" role="listbox" aria-label="Universities"></div>
-            <button type="button" class="add-school-button" id="add-school-open"><span>＋</span> Add a university not listed</button>
+            <div class="school-results" id="school-results" role="group" aria-label="Available universities"></div>
+            <button type="button" class="add-school-button" id="add-school-open" aria-haspopup="dialog" aria-controls="add-school-dialog" aria-expanded="false"><span aria-hidden="true">＋</span> Add a university not listed</button>
             <div class="selected-block">
               <div class="selected-heading"><span>YOUR SCHOOLS</span><span id="selected-count">0 selected</span></div>
-              <div id="selected-schools" class="selected-schools">
+              <div id="selected-schools" class="selected-schools" role="group" aria-label="Selected universities">
                 <p class="empty-selection">Your crew will show up here.</p>
               </div>
             </div>
-            <div id="school-calendars" class="school-calendars" aria-live="polite"></div>
+            <div id="school-calendars" class="school-calendars"></div>
           </div>
 
           <div class="planner-main">
@@ -91,21 +91,22 @@
                 <div class="summary-icon">✳</div>
                 <div><strong>Find your shared days off</strong><p>Add schools to compare their published break dates.</p></div>
               </div>
-              <div id="overlap-results" class="overlap-results"></div>
+              <div id="overlap-results" class="overlap-results" role="region" aria-label="Shared break date ranges" aria-live="polite" aria-atomic="false" aria-relevant="additions text removals"></div>
               <div class="planner-tools">
                 <div class="calendar-actions">
-                  <button type="button" class="secondary-button" id="add-break-open"><span>＋</span> Add missing dates</button>
-                  <label class="upload-button" for="calendar-upload"><span aria-hidden="true">↥</span> Import <input type="file" id="calendar-upload" accept=".ics,.csv,text/calendar,text/csv"></label>
+                  <button type="button" class="secondary-button" id="add-break-open" aria-haspopup="dialog" aria-controls="add-break-dialog" aria-expanded="false"><span aria-hidden="true">＋</span> Add missing dates</button>
+                  <label class="upload-button" for="calendar-upload"><span aria-hidden="true">↥</span> Import <input type="file" id="calendar-upload" aria-label="Import an ICS or CSV calendar" accept=".ics,.csv,text/calendar,text/csv"></label>
                   <label class="import-school-label" for="import-school"><span class="visually-hidden">Import dates for</span><select id="import-school" aria-label="University for imported calendar"><option value="">Choose school</option></select></label>
                 </div>
                 <a class="calendar-help-link" id="calendar-help" href="#calendar-sources">How dates are sourced</a>
+                <button type="button" class="secondary-button share-link-button" id="copy-share-link">Copy Share Link</button>
               </div>
             </div>
 
             <section class="calendar-view" aria-labelledby="calendar-view-title">
               <div class="calendar-view-heading">
                 <div class="calendar-view-title">
-                  <div><h3 id="calendar-view-title">Shared breaks</h3><p>Select a date to see which schools are off.</p></div>
+                  <div><h2 id="calendar-view-title">Shared breaks</h2><p>Select a date to see which schools are off.</p></div>
                 </div>
                 <div id="calendar-legend" class="calendar-legend" aria-label="School color legend"></div>
               </div>
@@ -153,10 +154,10 @@
 
     <footer><a class="brand footer-brand" href="#"><span class="brand-mark">W<span>.</span></span><span>WorkAround</span></a><span>Made for the days you get back together.</span><a href="#your-schools">Back to the planner ↑</a></footer>
 
-    <dialog id="add-school-dialog">
+    <dialog id="add-school-dialog" aria-labelledby="add-school-title" aria-modal="true">
       <form method="dialog" id="add-school-form">
-        <button class="dialog-close" aria-label="Close">×</button>
-        <div class="eyebrow muted-eyebrow">GROW YOUR CREW</div><h2>Add a university</h2>
+        <button type="button" class="dialog-close" data-close-dialog aria-label="Close add university dialog">×</button>
+        <div class="eyebrow muted-eyebrow">GROW YOUR CREW</div><h2 id="add-school-title">Add a university</h2>
         <p>Not on the list? Add any school by name.</p>
         <label class="field-label" for="new-school-name">University name</label>
         <input id="new-school-name" name="name" required maxlength="100" placeholder="e.g. University of Somewhere">
@@ -164,10 +165,10 @@
       </form>
     </dialog>
 
-    <dialog id="add-break-dialog">
+    <dialog id="add-break-dialog" aria-labelledby="add-break-title" aria-modal="true">
       <form method="dialog" id="add-break-form">
-        <button class="dialog-close" aria-label="Close">×</button>
-        <div class="eyebrow muted-eyebrow">ADD OFF DAYS</div><h2>Add break dates</h2>
+        <button type="button" class="dialog-close" data-close-dialog aria-label="Close add break dates dialog">×</button>
+        <div class="eyebrow muted-eyebrow">ADD OFF DAYS</div><h2 id="add-break-title">Add break dates</h2>
         <p>Add a break for one of your selected universities.</p>
         <label class="field-label" for="break-school">University</label>
         <select id="break-school" required></select>
@@ -177,7 +178,8 @@
         <div class="dialog-buttons"><button type="button" class="secondary-button" data-close-dialog>Cancel</button><button type="submit" class="primary-button">Save break</button></div>
       </form>
     </dialog>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div id="school-announcements" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
     <script src="academic-calendars.js"></script>
     <script src="app.js"></script>
   </body>
