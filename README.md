@@ -41,7 +41,7 @@ WorkAround is an independent planning tool, not an official university service. 
 
 ## Suggest a correction
 
-Dates may be inaccurate or become outdated. If you find a mistake or have a newer official source, [open a GitHub issue](https://github.com/iwasella/WorkAround/issues/new) with the university name, corrected dates, and a link to the official calendar. You can also contribute the correction directly: fork this public repository, update the relevant entry in `academic-calendars.js`, and open a pull request. Please include the official source link so the dates can be checked.
+Dates may be inaccurate or become outdated. If you find a mistake or have a newer official source, feel free to make a PR thank u thank u thank u lol
 
 ## Deployment
 
