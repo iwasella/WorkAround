@@ -39,6 +39,10 @@ Calendar entries are bundled in [`academic-calendars.js`](academic-calendars.js)
 
 WorkAround is an independent planning tool, not an official university service. It does not sync calendars or automatically detect changes to university schedules.
 
+## Suggest a correction
+
+Dates may be inaccurate or become outdated. If you find a mistake or have a newer official source, [open a GitHub issue](https://github.com/iwasella/WorkAround/issues/new) with the university name, corrected dates, and a link to the official calendar. You can also contribute the correction directly: fork this public repository, update the relevant entry in `academic-calendars.js`, and open a pull request. Please include the official source link so the dates can be checked.
+
 ## Deployment
 
 The site is hosted on GitHub Pages. Pushes to `main` run the validation suite and, if it passes, deploy the static site. You can also start a deployment manually from the **Actions** tab with **Deploy static site to GitHub Pages**.
