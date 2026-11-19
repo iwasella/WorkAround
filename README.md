@@ -48,3 +48,9 @@ Dates may be inaccurate or become outdated. If you find a mistake or have a newe
 The site is hosted on GitHub Pages. Pushes to `main` run the validation suite and, if it passes, deploy the static site. You can also start a deployment manually from the **Actions** tab with **Deploy static site to GitHub Pages**.
 
 The sitemap is available at [`sitemap.xml`](https://iwasella.github.io/WorkAround/sitemap.xml). Search engines control whether and when pages appear in results.
+
+## Automated calendar refresh
+
+The `Update academic calendars` workflow runs every Monday at 08:00 UTC. It currently checks a small set of supported university pages, validates any resulting data changes, and opens a pull request for review. Unsupported page layouts are skipped with a warning. No API key or paid service is required.
+
+To run it manually, open the repository’s **Actions** tab, choose **Update academic calendars**, select **Run workflow**, then confirm with **Run workflow**. If you later configure an updater that uses Gemini, add `GEMINI_API_KEY` under **Settings → Secrets and variables → Actions → New repository secret**; the current proof of concept does not use it.

@@ -1,0 +1,33 @@
+name: Update academic calendars
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Scrape supported university calendars
+        run: node scripts/scrape-calendars.mjs
+      - name: Validate calendar data
+        run: node --test
+      - name: Open a pull request for calendar changes
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automated/academic-calendar-updates
+          delete-branch: true
+          commit-message: "chore: update academic calendar dates"
+          title: "chore: update academic calendar dates"
+          body: "Automated calendar refresh. Please review the official source dates before merging."
